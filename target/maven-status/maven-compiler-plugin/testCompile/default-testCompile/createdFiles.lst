@@ -1,0 +1,5 @@
+pages/InventoryPage.class
+core/BaseTest.class
+pages/LoginPage.class
+core/TestListener.class
+tests/LoginTest.class

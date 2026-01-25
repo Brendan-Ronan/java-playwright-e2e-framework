@@ -1,0 +1,62 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<testng-results ignored="0" total="3" passed="3" failed="0" skipped="0">
+  <reporter-output>
+  </reporter-output>
+  <suite started-at="2026-01-25T08:20:30 EST" name="Sauce Demo Suite" finished-at="2026-01-25T08:20:36 EST" duration-ms="6009">
+    <groups>
+      <group name="smoke">
+        <method signature="LoginTest.addItemToCartShowsBadge()[pri:0, instance:tests.LoginTest@4b5d6a01]" name="addItemToCartShowsBadge" class="tests.LoginTest"/>
+        <method signature="LoginTest.invalidPasswordError()[pri:0, instance:tests.LoginTest@4b5d6a01]" name="invalidPasswordError" class="tests.LoginTest"/>
+        <method signature="LoginTest.userLogIn()[pri:0, instance:tests.LoginTest@4b5d6a01]" name="userLogIn" class="tests.LoginTest"/>
+      </group> <!-- smoke -->
+    </groups>
+    <test started-at="2026-01-25T08:20:30 EST" name="UI Tests" finished-at="2026-01-25T08:20:36 EST" duration-ms="6009">
+      <class name="tests.LoginTest">
+        <test-method is-config="true" signature="launchBrowser()[pri:0, instance:tests.LoginTest@4b5d6a01]" started-at="2026-01-25T08:20:30 EST" name="launchBrowser" finished-at="2026-01-25T08:20:32 EST" duration-ms="2882" status="PASS">
+          <reporter-output>
+          </reporter-output>
+        </test-method> <!-- launchBrowser -->
+        <test-method is-config="true" signature="createContextAndPage()[pri:0, instance:tests.LoginTest@4b5d6a01]" started-at="2026-01-25T08:20:32 EST" name="createContextAndPage" finished-at="2026-01-25T08:20:33 EST" duration-ms="550" status="PASS">
+          <reporter-output>
+          </reporter-output>
+        </test-method> <!-- createContextAndPage -->
+        <test-method signature="addItemToCartShowsBadge()[pri:0, instance:tests.LoginTest@4b5d6a01]" started-at="2026-01-25T08:20:33 EST" name="addItemToCartShowsBadge" finished-at="2026-01-25T08:20:34 EST" duration-ms="752" status="PASS">
+          <reporter-output>
+          </reporter-output>
+        </test-method> <!-- addItemToCartShowsBadge -->
+        <test-method is-config="true" signature="cleanup()[pri:0, instance:tests.LoginTest@4b5d6a01]" started-at="2026-01-25T08:20:34 EST" name="cleanup" finished-at="2026-01-25T08:20:34 EST" duration-ms="33" status="PASS">
+          <reporter-output>
+          </reporter-output>
+        </test-method> <!-- cleanup -->
+        <test-method is-config="true" signature="createContextAndPage()[pri:0, instance:tests.LoginTest@4b5d6a01]" started-at="2026-01-25T08:20:34 EST" name="createContextAndPage" finished-at="2026-01-25T08:20:34 EST" duration-ms="190" status="PASS">
+          <reporter-output>
+          </reporter-output>
+        </test-method> <!-- createContextAndPage -->
+        <test-method signature="invalidPasswordError()[pri:0, instance:tests.LoginTest@4b5d6a01]" started-at="2026-01-25T08:20:34 EST" name="invalidPasswordError" finished-at="2026-01-25T08:20:35 EST" duration-ms="537" status="PASS">
+          <reporter-output>
+          </reporter-output>
+        </test-method> <!-- invalidPasswordError -->
+        <test-method is-config="true" signature="cleanup()[pri:0, instance:tests.LoginTest@4b5d6a01]" started-at="2026-01-25T08:20:35 EST" name="cleanup" finished-at="2026-01-25T08:20:35 EST" duration-ms="26" status="PASS">
+          <reporter-output>
+          </reporter-output>
+        </test-method> <!-- cleanup -->
+        <test-method is-config="true" signature="createContextAndPage()[pri:0, instance:tests.LoginTest@4b5d6a01]" started-at="2026-01-25T08:20:35 EST" name="createContextAndPage" finished-at="2026-01-25T08:20:35 EST" duration-ms="133" status="PASS">
+          <reporter-output>
+          </reporter-output>
+        </test-method> <!-- createContextAndPage -->
+        <test-method signature="userLogIn()[pri:0, instance:tests.LoginTest@4b5d6a01]" started-at="2026-01-25T08:20:35 EST" name="userLogIn" finished-at="2026-01-25T08:20:35 EST" duration-ms="551" status="PASS">
+          <reporter-output>
+          </reporter-output>
+        </test-method> <!-- userLogIn -->
+        <test-method is-config="true" signature="cleanup()[pri:0, instance:tests.LoginTest@4b5d6a01]" started-at="2026-01-25T08:20:35 EST" name="cleanup" finished-at="2026-01-25T08:20:36 EST" duration-ms="239" status="PASS">
+          <reporter-output>
+          </reporter-output>
+        </test-method> <!-- cleanup -->
+        <test-method is-config="true" signature="closeBrowser()[pri:0, instance:tests.LoginTest@4b5d6a01]" started-at="2026-01-25T08:20:36 EST" name="closeBrowser" finished-at="2026-01-25T08:20:36 EST" duration-ms="85" status="PASS">
+          <reporter-output>
+          </reporter-output>
+        </test-method> <!-- closeBrowser -->
+      </class> <!-- tests.LoginTest -->
+    </test> <!-- UI Tests -->
+  </suite> <!-- Sauce Demo Suite -->
+</testng-results>
