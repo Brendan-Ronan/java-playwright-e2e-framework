@@ -55,7 +55,19 @@
           <suiteXmlFiles>
             <suiteXmlFile>testng.xml</suiteXmlFile>
           </suiteXmlFiles>
+
+          <!-- Fix CI flakiness: run in same JVM -->
+          <forkCount>0</forkCount>
+          <reuseForks>false</reuseForks>
+
+          <!-- Optional: makes failures easier to read -->
+          <trimStackTrace>false</trimStackTrace>
         </configuration>
+      </plugin>
+      <plugin>
+        <groupId>org.codehaus.mojo</groupId>
+        <artifactId>exec-maven-plugin</artifactId>
+        <version>3.1.0</version>
       </plugin>
     </plugins>
   </build>
