@@ -27,12 +27,15 @@ jobs:
 
       - name: Debug - Show smoke suite file
         run: |
+          echo "PWD=$(pwd)"
+          echo "Repo root:"
           ls -la
-          echo "---- testng-smoke.xml ----"
-          cat testng-smoke.xml
-          echo "--------------------------"
-          file testng-smoke.xml
-          wc -c testng-smoke.xml
+          echo "Suites dir:"
+          ls -la src/test/resources/suites || true
+          echo "Smoke suite contents:"
+          cat src/test/resources/suites/testng-smoke.xml || true
+          echo "Size:"
+          wc -c src/test/resources/suites/testng-smoke.xml || true
 
       - name: Run Smoke Suite
         run: mvn -q test -Dsurefire.suiteXmlFiles=src/test/resources/suites/testng-smoke.xml
