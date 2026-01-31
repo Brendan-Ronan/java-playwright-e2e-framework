@@ -25,8 +25,17 @@ jobs:
       - name: Install Playwright browsers
         run: mvn -q exec:java -Dexec.mainClass=com.microsoft.playwright.CLI -Dexec.args="install --with-deps"
 
+      - name: Debug - Show smoke suite file
+        run: |
+          ls -la
+          echo "---- testng-smoke.xml ----"
+          cat testng-smoke.xml
+          echo "--------------------------"
+          file testng-smoke.xml
+          wc -c testng-smoke.xml
+
       - name: Run Smoke Suite
-        run: mvn -q test -Dsurefire.suiteXmlFiles=testng-smoke.xml
+        run: mvn -q test -Dsurefire.suiteXmlFiles=src/test/resources/suites/testng-smoke.xml
 
       # Always upload reports/artifacts, even if tests fail
       - name: Upload Surefire Reports
