@@ -38,7 +38,7 @@ jobs:
           wc -c src/test/resources/suites/testng-smoke.xml || true
 
       - name: Run Smoke Suite
-        run: mvn -q test -Dsurefire.suiteXmlFiles=src/test/resources/suites/testng-smoke.xml
+        run: mvn test -Dsurefire.suiteXmlFiles=src/test/resources/suites/testng-smoke.xml
 
       # Always upload reports/artifacts, even if tests fail
       - name: Upload Surefire Reports

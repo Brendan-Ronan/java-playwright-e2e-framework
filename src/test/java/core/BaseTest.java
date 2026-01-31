@@ -17,12 +17,14 @@ public abstract class BaseTest {
     protected String baseUrl = System.getProperty("baseUrl", "https://saucedemo.com/");
     protected boolean headless = Boolean.parseBoolean(System.getProperty("headless", "true"));
 
-    @BeforeClass
+    @BeforeClass(alwaysRun = true)
     public void launchBrowser() {
+        System.out.println(">> BeforeClass launchBrowser() START");
         playwright = Playwright.create();
         browser = playwright.chromium().launch(
-                new BrowserType.LaunchOptions().setHeadless(headless)
-        );
+                new BrowserType.LaunchOptions().setHeadless(headless));
+
+        System.out.println(">> BeforeClass launchBrowser() DONE. browser=" + (browser != null));
     }
 
     @AfterClass(alwaysRun = true)
@@ -31,8 +33,9 @@ public abstract class BaseTest {
         if (playwright != null) playwright.close();
     }
 
-    @BeforeMethod
+    @BeforeMethod(alwaysRun = true)
     public void createContextAndPage() {
+        System.out.println(">> BeforeMethod createContextAndPage() START. browser=" + (browser != null));
         // Defensive guard: if BeforeClass didn't run, fail loudly
         if (browser == null)
             throw new IllegalStateException("Browser not initialized. Ensure @BeforeClass launchBrowser() is executed before this method.");
@@ -41,13 +44,21 @@ public abstract class BaseTest {
                 .setViewportSize(1280, 720));
 
         page = context.newPage();
+
+        System.out.println(">> BeforeMethod createContextAndPage() DONE. page=" + (page != null));
+
+        // Start tracing for this test
+//        context.tracing().start(new Tracing.StartOptions()
+//                .setScreenshots(true)
+//                .setSnapshots(true)
+//                .setSources(true));
     }
 
     @AfterMethod(alwaysRun = true)
     public void cleanup() {
         try {
-            // If the listener didn't stop tracing (test passed), stop it quietlyu
-            context.tracing().stop();
+            // For passing tests, stop tracing without saving a file
+            if (context != null) context.tracing().stop();
         } catch (Exception ignored) {}
 
         if (context != null) context.close();
