@@ -37,8 +37,25 @@ jobs:
           echo "Size:"
           wc -c src/test/resources/suites/testng-smoke.xml || true
 
+      - name: Debug - verify suite file exists
+        run: |
+          pwd
+          echo "List suites directory:"
+          ls -la src/test/resources/suites || true
+          echo "Check exact file:"
+          ls -la src/test/resources/suites/testng-smoke.xml || true
+          echo "File type:"
+          file src/test/resources/suites/testng-smoke.xml || true
+          echo "Byte count:"
+          wc -c src/test/resources/suites/testng-smoke.xml || true
+          echo "First 20 lines:"
+          sed -n '1,20p' src/test/resources/suites/testng-smoke.xml || true
+
+      - name: Build test classpath (compile + copy resources)
+        run: mvn -q test-compile
+
       - name: Run Smoke Suite
-        run: mvn test -Dsurefire.suiteXmlFiles=src/test/resources/suites/testng-smoke.xml
+        run: mvn test -Dsurefire.suiteXmlFiles=target/test-classes/suites/testng-smoke.xml
 
       # Always upload reports/artifacts, even if tests fail
       - name: Upload Surefire Reports

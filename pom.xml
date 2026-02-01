@@ -15,6 +15,7 @@
 
     <playwright.version>1.47.0</playwright.version>
     <testng.version>7.10.2</testng.version>
+    <suiteXmlFile>target/test-classes/suites/testng-smoke.xml</suiteXmlFile>
   </properties>
 
   <dependencies>
@@ -53,15 +54,8 @@
         <version>3.2.5</version>
         <configuration>
           <suiteXmlFiles>
-            <suiteXmlFile>src/test/resources/suites/testng.xml</suiteXmlFile>
+            <suiteXmlFile>${suiteXmlFile}</suiteXmlFile>
           </suiteXmlFiles>
-
-          <!-- Fix CI flakiness: run in same JVM -->
-          <forkCount>0</forkCount>
-          <reuseForks>false</reuseForks>
-
-          <!-- Optional: makes failures easier to read -->
-          <trimStackTrace>false</trimStackTrace>
         </configuration>
       </plugin>
       <plugin>
