@@ -1,6 +1,7 @@
 package core;
 
 import com.microsoft.playwright.*;
+import org.testng.ITestResult;
 import org.testng.annotations.*;
 
 import java.nio.file.Files;
@@ -48,20 +49,40 @@ public abstract class BaseTest {
         System.out.println(">> BeforeMethod createContextAndPage() DONE. page=" + (page != null));
 
         // Start tracing for this test
-//        context.tracing().start(new Tracing.StartOptions()
-//                .setScreenshots(true)
-//                .setSnapshots(true)
-//                .setSources(true));
+        context.tracing().start(new Tracing.StartOptions()
+                .setScreenshots(true)
+                .setSnapshots(true)
+                .setSources(true));
     }
 
     @AfterMethod(alwaysRun = true)
-    public void cleanup() {
+    public void cleanup(ITestResult result) {
         try {
             // For passing tests, stop tracing without saving a file
-            if (context != null) context.tracing().stop();
-        } catch (Exception ignored) {}
+            if (context != null) {
+                if (!result.isSuccess()) {
+                    ensureDir("artifacts");
+                    String testName = result.getTestClass().getName() + "." +
+                            result.getMethod().getMethodName();
 
-        if (context != null) context.close();
+                    // Screenshot
+                    if (page != null) {
+                        page.screenshot(new Page.ScreenshotOptions()
+                                .setPath(Path.of("artifacts", testName + ".png"))
+                                .setFullPage(true));
+                    }
+
+                    // Trace
+                    context.tracing().stop(new Tracing.StopOptions()
+                            .setPath(Path.of("artifacts", testName + ".zip")));
+                } else {
+                    context.tracing().stop();
+                }
+            }
+        } catch (Exception ignored) {
+        } finally {
+            if (context != null) context.close();
+        }
     }
 
     // Utility for later (screenshots on failure, etc.)

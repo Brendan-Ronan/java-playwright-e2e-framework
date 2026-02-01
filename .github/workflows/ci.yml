@@ -55,7 +55,7 @@ jobs:
         run: mvn -q test-compile
 
       - name: Run Smoke Suite
-        run: mvn test -Dsurefire.suiteXmlFiles=target/test-classes/suites/testng-smoke.xml
+        run: mvn -q test -Dheadless=true -Dsurefire.suiteXmlFiles=target/test-classes/suites/testng-smoke.xml
 
       # Always upload reports/artifacts, even if tests fail
       - name: Upload Surefire Reports

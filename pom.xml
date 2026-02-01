@@ -65,4 +65,14 @@
       </plugin>
     </plugins>
   </build>
+
+  <!-- Default Suite -->
+  <profiles>
+    <profile>
+      <id>smoke</id>
+      <properties>
+        <surefire.suiteXmlFiles>target/test-classes/suites/testng-smoke.xml</surefire.suiteXmlFiles>
+      </properties>
+    </profile>
+  </profiles>
 </project>
